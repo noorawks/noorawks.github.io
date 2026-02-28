@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Noor Muhammad Reza - CV</title>
+<style>
+/* Base Styles */
+:root {
+--primary-text: #000000;
+--secondary-text: #333333;
+--accent-color: #2563eb;
+--font-main: "Arial", "Helvetica", sans-serif;
+}
+
+* {
+box-sizing: border-box;
+margin: 0;
+padding: 0;
+}
+
+body {
+font-family: var(--font-main);
+line-height: 1.4;
+color: var(--primary-text);
+background-color: #f0f0f0;
+padding: 40px 0;
+}
+
+/* Container for A4 Aspect Ratio */
+.resume-page {
+width: 210mm;
+min-height: 297mm;
+margin: 0 auto;
+background: white;
+padding: 15mm 20mm;
+box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+/* Typography */
+h1 {
+font-size: 24pt;
+text-transform: uppercase;
+margin-bottom: 2px;
+color: #000;
+text-align: center;
+}
+
+h2 {
+font-size: 13pt;
+text-transform: uppercase;
+border-bottom: 1.5px solid #000;
+margin-top: 18px;
+margin-bottom: 8px;
+padding-bottom: 2px;
+color: #000;
+}
+
+h3 {
+font-size: 11pt;
+margin-bottom: 2px;
+color: #000;
+}
+
+p, li {
+font-size: 10pt;
+color: var(--secondary-text);
+margin-bottom: 2px;
+}
+
+a {
+color: var(--primary-text);
+text-decoration: underline;
+}
+
+/* Layout Components */
+.header {
+margin-bottom: 20px;
+text-align: center;
+}
+
+.contact-info {
+display: flex;
+justify-content: center;
+gap: 10px;
+flex-wrap: wrap;
+font-size: 9pt;
+}
+
+.section {
+margin-bottom: 12px;
+}
+
+.item {
+margin-bottom: 10px;
+}
+
+.item-header {
+display: flex;
+justify-content: space-between;
+align-items: baseline;
+font-weight: bold;
+}
+
+.sub-header {
+display: flex;
+justify-content: space-between;
+font-style: italic;
+font-size: 10pt;
+margin-bottom: 3px;
+}
+
+ul {
+margin-left: 18px;
+margin-top: 3px;
+}
+
+.skills-container {
+font-size: 10pt;
+}
+
+.project-link {
+font-size: 9pt;
+font-style: italic;
+margin-bottom: 3px;
+display: block;
+}
+
+/* Print Optimization */
+@media print {
+body { background: none; padding: 0; }
+.resume-page { box-shadow: none; margin: 0; width: 100%; padding: 10mm 15mm; }
+.no-print { display: none; }
+a { text-decoration: none; }
+}
+
+.print-btn {
+position: fixed;
+bottom: 30px;
+right: 30px;
+background: #000;
+color: white;
+border: none;
+padding: 12px 20px;
+border-radius: 8px;
+cursor: pointer;
+font-weight: bold;
+z-index: 100;
+}
+</style>
+</head>
+<body>
+
+<button class="print-btn no-print" onclick="window.print()">Export to PDF</button>
+
+<div class="resume-page">
+
+<!-- HEADER -->
+<header class="header">
+<h1>NOOR MUHAMMAD REZA</h1>
+<div class="contact-info">
+<span>Jakarta, Indonesia</span> |
+<span><a href="mailto:noor.reza02@gmail.com">noor.reza02@gmail.com</a></span> |
+<span><a href="https://linkedin.com/in/noor-muhammad-reza">linkedin.com/in/noor-muhammad-reza</a></span> |
+<span><a href="https://github.com/noorawks">github.com/noorawks</a></span>
+</div>
+</header>
+
+<!-- SUMMARY -->
+<section class="section">
+<h2>Professional Profile</h2>
+<p>Fullstack Engineer with 7+ years of experience in web programming and system analysis. Specialized in building scalable enterprise applications using Laravel, Odoo, Vue.js, and modern web technologies. Proven track record in delivering high-impact solutions for large-scale operations, from HR systems to supply chain management platforms. Strong problem-solving skills with ability to rapidly adapt to new technologies and frameworks.</p>
+</section>
+
+<!-- EXPERIENCE -->
+<section class="section">
+<h2>Professional Experience</h2>
+
+<div class="item">
+<div class="item-header">
+<span>PT. Erajaya Swasembada, Tbk.</span>
+<span>2022 – Present</span>
+</div>
+<div class="sub-header">
+<span>Fullstack Engineer</span>
+<span>Jakarta, Indonesia</span>
+</div>
+<ul>
+<li>Developed custom Enterprise SCM Portal managing thousands of warehouses with thousands of daily transactions nationwide.</li>
+<li>Implemented PostgreSQL Materialized Views for high-performance analytics, enabling instant dashboard reports without hardware upgrades.</li>
+<li>Designed multi-project hub architecture supporting isolated repository management for cross-departmental collaboration.</li>
+<li>Built all modules from scratch (no-inheritance) ensuring optimized database schema and maximum performance.</li>
+<li>Integrated asynchronous Job Queue for legacy API integration, eliminating system freezing issues.</li>
+<li>Mastered Odoo framework and Docker optimization from zero knowledge within tight deadlines, demonstrating strong learning agility.</li>
+</ul>
+</div>
+
+<div class="item">
+<div class="item-header">
+<span>Allstars Indonesia</span>
+<span>2019 – 2022</span>
+</div>
+<div class="sub-header">
+<span>Web Developer</span>
+<span>Jakarta, Indonesia</span>
+</div>
+<ul>
+<li>Built scalable APIs and systems with reusable code and libraries using Laravel framework.</li>
+<li>Identified and fixed bugs while implementing performance improvements for web applications.</li>
+<li>Worked in Agile/Scrum methodology ensuring timely feature delivery every sprint.</li>
+</ul>
+</div>
+
+<div class="item">
+<div class="item-header">
+<span>Self-employed</span>
+<span>2017 – Present</span>
+</div>
+<div class="sub-header">
+<span>Freelance Web Developer</span>
+<span>Remote</span>
+</div>
+<ul>
+<li>Developed Integrated HR Management System for national corporate group with multiple subsidiaries.</li>
+<li>Built company profile websites and internal applications for various clients.</li>
+<li>Created online examination system for educational institutions.</li>
+</ul>
+</div>
+
+</section>
+
+<!-- KEY PROJECTS -->
+<section class="section">
+<h2>Key Projects</h2>
+
+<div class="item">
+<div class="item-header">
+<span>Enterprise SCM Portal – Erajaya Group</span>
+<span>2024 - Present</span>
+</div>
+<p>Custom Supply Chain Management system for one of Indonesia's largest distribution and retail companies.</p>
+<ul>
+<li>Manages thousands of warehouses with thousands of daily transactions nationwide.</li>
+<li>Implemented PostgreSQL Materialized Views moving complex query calculations to background processes.</li>
+<li>Designed multi-project repository architecture enabling scalable development across teams.</li>
+<li>Built from scratch with optimized database schema for maximum performance on standard infrastructure.</li>
+<li>Integrated asynchronous Job Queue handling external API calls without impacting system responsiveness.</li>
+</ul>
+<p><strong>Tech Stack:</strong> Odoo 17, PostgreSQL, Docker, Python, Job Queue, REST API</p>
+</div>
+
+<div class="item">
+<div class="item-header">
+<span>Integrated HR Management System</span>
+<span>2018 - 2020</span>
+</div>
+<p>Centralized HR platform for national corporate group handling succession planning, KPI management, and automated reporting.</p>
+<ul>
+<li>Pioneered modular architecture using nwidart/laravel-modules enabling parallel development without code conflicts.</li>
+<li>Implemented multi-subsidiary data orchestration with strict data isolation per company (multi-tenancy concept).</li>
+<li>Modernized UX with Vue.js and Axios for asynchronous data interactions and responsive dashboard.</li>
+<li>Built custom report generator processing large transaction data into structured PDF and Excel documents.</li>
+<li>Successfully managed thousands of employee data across multiple subsidiaries with high security level.</li>
+</ul>
+<p><strong>Tech Stack:</strong> PHP, Laravel 5.4, MySQL, Vue.js, Axios, Nwidart Modules</p>
+</div>
+
+</section>
+
+<!-- SKILLS -->
+<section class="section">
+<h2>Technical Skills</h2>
+<div class="skills-container">
+<p><strong>Languages & Database:</strong> PHP, JavaScript, Python, Golang, PostgreSQL, MySQL</p>
+<p><strong>Frameworks & Libraries:</strong> Laravel, Odoo, Vue.js, React.js, Node.js</p>
+<p><strong>Tools & Infrastructure:</strong> Git, Docker, AWS, Nginx, Jira</p>
+<p><strong>Specializations:</strong> Enterprise Application Development, System Architecture, API Design, Database Optimization, Modular Programming</p>
+</div>
+</section>
+
+<!-- EDUCATION -->
+<section class="section">
+<h2>Education</h2>
+<div class="item">
+<div class="item-header">
+<span>BINUS University</span>
+<span>Graduated 2018</span>
+</div>
+<div class="sub-header">
+<span>Bachelor of Information System & Management (Double Degree)</span>
+<span>GPA: 3.39 / 4.00</span>
+</div>
+</div>
+</section>
+
+</div>
+
+</body>
+</html>
