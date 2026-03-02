@@ -340,6 +340,7 @@ export class ContentReader {
    */
   async loadProjectsFromFolder(): Promise<ProjectContent[]> {
     const projects: ProjectContent[] = []
+    // @ts-ignore - Vite's import.meta.glob is injected at build time
     const projectModules = import.meta.glob('/public/projects/*.md', { as: 'raw', eager: false })
     
     for (const path in projectModules) {
