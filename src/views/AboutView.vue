@@ -2,7 +2,7 @@
   <div class="about-view">
     <div v-if="isLoading" class="loading-state">
       <div class="loading-spinner"></div>
-      <p>Loading content....</p>
+      <p>Loading content...</p>
     </div>
     
     <div v-else-if="error" class="error-state">
