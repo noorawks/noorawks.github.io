@@ -377,7 +377,7 @@ export class ContentReader {
       const titleMatch = markdown.match(/^#\s+(.+)$/m)
       const title = titleMatch?.[1]?.trim() || 'Untitled Project'
       
-      const roleMatch = markdown.match(/\*\*Role\*\*:\s*(.+)$/m)
+      const _roleMatch = markdown.match(/\*\*Role\*\*:\s*(.+)$/m)
       const techStackMatch = markdown.match(/\*\*Tech Stack\*\*:\s*(.+)$/m)
       const dateMatch = markdown.match(/\*\*(?:Period|Date)\*\*:\s*(.+)$/m)
       
