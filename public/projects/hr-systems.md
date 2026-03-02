@@ -2,7 +2,7 @@
 
 **Role**: Backend & System Engineer  
 **Tech Stack**: PHP, Laravel, MySQL, Vue.js, Axios, Nwidart Modules  
-**Period**: 2017 - 2019
+**Period**: 2018 - 2020
 
 ## Overview
 

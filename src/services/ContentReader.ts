@@ -135,7 +135,7 @@ export class ContentReader {
     
     return {
       bio: this.parseMarkdown(bioText),
-      photo: '/profile-pic.jpg',
+      photo: '/profile-pic.webp',
       experience,
       education
     }
