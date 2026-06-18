@@ -26,7 +26,6 @@ Fullstack Engineer who has passion in web programming and system analysis. Highl
 - PHP
 - JavaScript
 - Python
-- Golang
 - PostgreSQL
 - MySQL
 
