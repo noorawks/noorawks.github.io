@@ -1,6 +1,6 @@
 # Integrated HR Management System (National Group)
 
-**Role**: Backend & System Engineer  
+**Role**: Fullstack Engineer
 **Tech Stack**: PHP, Laravel, MySQL, Vue.js, Axios, Nwidart Modules  
 **Period**: 2018 - 2020
 
