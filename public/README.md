@@ -4,12 +4,12 @@ Full Stack Engineer
 Building elegant solutions to complex problems
 
 ## About
-Fullstack Engineer who has passion in web programming and system analysis. Highly motivated person, well organized and enthusiastic person. Love to work as part of team or individual.
+Fullstack Engineer with 7+ years of experience building enterprise web applications that operate at real scale — from an HR platform managing thousands of employees across multiple subsidiaries, to a supply chain system handling thousands of daily transactions for one of Indonesia's largest retail groups, to a national exam platform serving 100,000 concurrent participants at near-zero infrastructure cost.
 
 
 ### Experience
 - **Fullstack Engineer** at PT. Erajaya Swasembada, Tbk. (2022-Present)
-  Supporting internal needs by working with a strong focus on Laravel & Odoo, building scalable and efficient web applications. Also work with Vue.js, PostgreSQL, Docker for deployments in Linux environments.
+  Building enterprise-grade internal systems supporting group-wide operations, with primary focus on Odoo and Laravel. Key contributions include a custom SCM portal handling thousands of daily transactions across thousands of warehouse locations nationwide, and scalable internal web applications serving multiple subsidiaries.
   
 - **Web Developer** at Allstars Indonesia (2019-2022)
   Working with a strong focus on Laravel, build scalable APIs and system with reusable code and libraries for future use. Also identify, fix bugs, and do some improvement for application performance
