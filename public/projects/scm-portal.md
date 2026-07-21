@@ -1,7 +1,7 @@
 # Enterprise SCM Portal – Erajaya Group
 
 **Role**: Fullstack Engineer
-**Tech Stack**: Odoo 17, PostgreSQL, Docker, Python  
+**Tech Stack**: Odoo 17, PostgreSQL, Docker, Python, Jenkins, Nginx
 **Period**: 2024 - Present
 
 ## Overview
