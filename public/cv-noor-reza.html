@@ -160,6 +160,7 @@ z-index: 100;
 <h1>NOOR MUHAMMAD REZA</h1>
 <div class="contact-info">
 <span>Jakarta, Indonesia</span> |
+<!--<span>+62 XXX-XXXX-XXXX</span> |-->
 <span><a href="mailto:noor.reza02@gmail.com">noor.reza02@gmail.com</a></span> |
 <span><a href="https://linkedin.com/in/noor-muhammad-reza">linkedin.com/in/noor-muhammad-reza</a></span> |
 <span><a href="https://noorawks.is-a.dev">noorawks.is-a.dev</a></span>
@@ -169,7 +170,7 @@ z-index: 100;
 <!-- SUMMARY -->
 <section class="section">
 <h2>Professional Profile</h2>
-<p>Fullstack Engineer with 7+ years of experience building enterprise web applications that operate at real scale — from an HR platform managing thousands of employees across multiple subsidiaries, to a supply chain system handling thousands of daily transactions for one of Indonesia's largest retail groups, to a national exam platform serving 100,000 concurrent participants at near-zero infrastructure cost.</p>
+<p>Fullstack Engineer with 8+ years of experience building enterprise web applications that operate at real scale — from an HR platform managing thousands of employees across multiple subsidiaries, to a supply chain system handling thousands of daily transactions for one of Indonesia's largest retail groups, to a national exam platform serving 100,000 concurrent participants at near-zero infrastructure cost.</p>
 </section>
 
 <!-- EXPERIENCE -->
@@ -185,7 +186,13 @@ z-index: 100;
 <span>Fullstack Engineer</span>
 <span>Jakarta, Indonesia</span>
 </div>
-<p>Building enterprise-grade internal systems supporting group-wide operations, with primary focus on Odoo and Laravel. Key contributions include a custom SCM portal handling thousands of daily transactions across thousands of warehouse locations nationwide, and scalable internal web applications serving multiple subsidiaries under the Erajaya ecosystem.</p>
+<p>One of Indonesia's largest consumer electronics and lifestyle groups — brands spanning Erafone, iBox, JD Sports, Samsung, Huawei, and Xiaomi under one ecosystem.</p>
+<ul>
+<li>Built custom SCM portal (Odoo 17) from scratch, handling thousands of daily transactions across thousands of warehouse locations nationwide</li>
+<li>Reduced daily RDS consumption ~50% through B-tree indexing, N+1 refactoring, and automated database maintenance</li>
+<li>Designed multi-repo architecture enabling CI/CD collaboration with DevOps team and parallel development across squads</li>
+<li>Integrated async Job Queue for legacy system integration, preventing system freezes from high-latency external API calls</li>
+</ul>
 
 <p><strong>Tech Stack:</strong> Python, Odoo 17, PHP, Laravel, Vue.js, JavaScript, PostgreSQL, Docker, Nginx</p>
 </div>
@@ -200,8 +207,25 @@ z-index: 100;
 <span>Jakarta, Indonesia</span>
 </div>
 <p>The first and largest influencer marketing platform in Indonesia — connecting 150,000+ influencers with 25,000+ brands, powering 500,000+ campaign posts across digital platforms.</p>
-<p>Responsible for building and maintaining scalable APIs and backend systems that supported the platform's core marketplace operations. This included developing reusable code architecture, identifying and resolving bugs, and continuously improving application performance to keep the platform stable under high traffic and transaction volume.</p>
+<ul>
+<li>Built and maintained scalable APIs and backend systems supporting the platform's core marketplace operations under high traffic volume</li>
+<li>Developed reusable code architecture and improved application performance through bug resolution and query optimization</li>
+<li>Collaborated in cross-functional Agile/Scrum teams to deliver features on tight deadlines</li>
+</ul>
 <p><strong>Tech Stack:</strong> PHP, Laravel, MySQL — in an Agile/Scrum environment with cross-functional teams.</p>
+</div>
+
+<div class="item">
+<div class="item-header">
+<span>PT. Saywa Trade Utama</span>
+<span>2018 – 2019</span>
+</div>
+<div class="sub-header">
+<span>Web Developer</span>
+<span>Jakarta, Indonesia</span>
+</div>
+<p>Full Stack Web Developer using Laravel and AJAX JQuery</p>
+<p><strong>Tech Stack:</strong> PHP, Laravel, MySQL</p>
 </div>
 
 <div class="item">
@@ -213,7 +237,7 @@ z-index: 100;
 <span>Freelance Web Developer</span>
 <span>Remote</span>
 </div>
-<p>Delivered custom web applications for various clients, including an enterprise HR management system for a national corporate group and an online examination platform for a national automotive company.</p>
+<p>Delivered custom web applications for enterprise clients, including an HR management system for a national corporate group and an online examination platform for a national automotive company, owning end-to-end delivery from architecture to production.</p>
 </div>
 
 </section>
@@ -229,13 +253,9 @@ z-index: 100;
 </div>
 <p>Custom Supply Chain Management system for one of Indonesia's largest distribution and retail companies.</p>
 <ul>
-<li>Manages thousands of warehouses with thousands of daily transactions nationwide.</li>
-<li>Implemented PostgreSQL Materialized Views moving complex query calculations to background processes.</li>
-<li>Self-taught Docker deployment for Odoo and set up multi-repo architecture with isolated addons-path configurations, enabling CI/CD collaboration with DevOps team and parallel development across squads.</li>
-<li>Built all modules from scratch (no-inheritance) with lean database schema optimized for standard infrastructure.</li>
-<li>Integrated asynchronous Job Queue handling external API calls without impacting system responsiveness.</li>
-<li>Reduced daily RDS consumption ~50% through B-tree indexing, N+1 query refactoring, and cron-based data cleanup with PostgreSQL vacuum routines.</li>
-<li>Set up log rotation on application servers to prevent disk storage incidents.</li>
+<li>Implemented PostgreSQL Materialized Views moving complex query calculations to background processes for instant dashboard reports</li>
+<li>Built all modules from scratch (no-inheritance) with lean database schema optimized for standard infrastructure</li>
+<li>Integrated async Job Queue for legacy system integration, preventing system freezes from high-latency external API calls</li>
 </ul>
 <p><strong>Tech Stack:</strong> Odoo 17, PostgreSQL, Docker, Python, Job Queue, REST API</p>
 </div>
@@ -247,11 +267,11 @@ z-index: 100;
 </div>
 <p>National online exam platform for 100,000 concurrent participants, built at near-zero infrastructure cost.</p>
 <ul>
-<li>Identified that the previous system's bottleneck was single-form architecture, not the platform — redesigned to distribute participants across auto-generated Google Form copies via unique URL mapping, absorbing all exam delivery load on Google's free infrastructure.</li>
-<li>Built Laravel orchestration layer handling participant assignment, URL-to-school mapping, automated score consolidation from hundreds of spreadsheets, and leaderboard management.</li>
-<li>Implemented encrypted PDF distribution for exam link security and bulk Excel import for province-wide student onboarding.</li>
+<li>Redesigned the previous single-form architecture into distributed Google Form copies via unique URL mapping, absorbing 100,000 concurrent participants on Google's free infrastructure at near-zero cost</li>
+<li>Built Laravel orchestration layer handling participant assignment, automated score consolidation from hundreds of spreadsheets, and leaderboard management</li>
+<li>Implemented encrypted PDF distribution for exam link security and bulk Excel import for province-wide student onboarding</li>
 </ul>
-<p><strong>Tech Stack:</strong> Laravel 12, Livewire 3, PostgreSQL, Google Apps Script, Github Actions</p>
+<p><strong>Tech Stack:</strong> Laravel 12, Livewire 3, Tailwind CSS, PostgreSQL, Google Apps Script, Github Actions</p>
 </div>
 
 <div class="item">
@@ -261,10 +281,9 @@ z-index: 100;
 </div>
 <p>Centralized HR platform for national corporate group handling succession planning, KPI management, and automated reporting.</p>
 <ul>
-<li>Pioneered modular architecture using nwidart/laravel-modules enabling parallel development without code conflicts.</li>
-<li>Implemented multi-subsidiary data orchestration with strict data isolation per company (multi-tenancy concept).</li>
-<li>Modernized UX with Vue.js and Axios for asynchronous data interactions and responsive dashboard.</li>
-<li>Built custom report generator processing large transaction data into structured PDF and Excel documents.</li>
+<li>Pioneered modular architecture using nwidart/laravel-modules enabling parallel development without code conflicts</li>
+<li>Implemented multi-subsidiary data orchestration with strict data isolation per company (multi-tenancy concept)</li>
+<li>Modernized UX with Vue.js and Axios for asynchronous data interactions and responsive dashboard</li>
 </ul>
 <p><strong>Tech Stack:</strong> PHP, Laravel 5.4, MySQL, Vue.js, Axios, Nwidart Modules</p>
 </div>

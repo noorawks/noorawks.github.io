@@ -49,11 +49,22 @@ Result: Optimized performance with lean, custom-tailored data structures.
 
 Result: System remains responsive regardless of external API performance.
 
+### 6. Database & Server Optimization (Real-World Tuning)
+**Challenge**: Both custom-built and inherited legacy modules suffered from unoptimized queries and accumulating unused data. Daily RDS usage was creeping up, and unbounded log files risked disk storage incidents on application servers.
+
+**Solution**:
+- Audited queries across all modules — including legacy code not originally written by me — and resolved bottlenecks with B-tree indexing and N+1 refactoring.
+- Built cron-based cleanup routines to remove unused data, followed by PostgreSQL vacuum to reclaim dead rows and prevent table bloat.
+- Configured log rotation on application servers to keep disk usage under control.
+
+Result: Maintained daily RDS usage consistently around 50%, preventing degradation from legacy modules and eliminating storage-related incidents through automated maintenance.
+
 ## Impact & Metrics
 
 - **Proven at National Scale**: Successfully manages supply chain flow for thousands of Erajaya distribution points nationwide
 - **Optimized Cost**: System performance remains stable on standard servers thanks to query optimization and Materialized Views usage
 - **Developer Friendly**: Multi-repo architecture facilitates cross-departmental collaboration in future feature development
+- **Stable ~50% RDS Usage**: Database optimization and automated maintenance kept daily consumption consistently under control despite growing transaction volume
 
 ## Technologies Used
 

@@ -1,7 +1,7 @@
 # Exam Competition Platform - TEKIRO
 
 **Role**: Fullstack Engineer  
-**Tech Stack**: Laravel, PHP, Livewire 3, PostgreSQL, Google Apps Script, Github Actions
+**Tech Stack**: Laravel, PHP, Livewire 3, Tailwind CSS, PostgreSQL, Google Apps Script, Github Actions
 **Period**: January – April 2026
 
 ## Overview
