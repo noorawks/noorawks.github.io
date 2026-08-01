@@ -1,4 +1,4 @@
-# Enterprise SCM Portal – Erajaya Group
+# Enterprise SCM Portal - Erajaya Group
 
 **Role**: Fullstack Engineer
 **Tech Stack**: Odoo 17, PostgreSQL, Docker, Python, Jenkins, Nginx
@@ -6,70 +6,82 @@
 
 ## Overview
 
-Developed a custom Supply Chain Management (SCM) system for Erajaya Group, one of Indonesia's largest distribution and retail companies. The system serves as the operational backbone managing stock flow across thousands of warehouses with thousands of daily transactions.
+Developed a custom Supply Chain Management (SCM) system for Erajaya Group, one of Indonesia's largest consumer electronics and lifestyle groups (Erafone, iBox, JD Sports). The system serves as the operational backbone managing stock flow across 5,000+ warehouses nationwide, processing hundreds of daily transactions with hundreds of concurrent users, plus an async pipeline handling 300-500K daily delivery order records ingested from Kafka.
 
 ## Executive Summary
 
-Built a custom SCM system for Erajaya Group handling massive-scale logistics operations. The system manages thousands of warehouses with thousands of daily transactions, designed with optimized architecture to run efficiently on standard infrastructure while supporting future scalability.
+Built the highest-complexity Odoo project I've ever handled: a national-scale SCM portal for Erajaya Group. The system integrates six interconnected state machines, connects to 5+ external services, enforces 25+ granular security groups with multi-company data isolation, and handles massive data throughput (300-500K Kafka records/day) while keeping the UI responsive for hundreds of concurrent warehouse users.
 
 ## Key Technical Achievements
 
-### 1. Rapid Learning & Production-Ready Deployment
+### 1. Rapid Learning and Production-Ready Deployment
+
 **Challenge**: Started the project with zero Odoo experience and no prior knowledge of optimized Docker deployment for enterprise systems.
 
 **Solution**: Conducted intensive self-learning and research to master Odoo framework and Docker optimization within tight deadlines. Implemented production-ready deployment with optimized container resource management and Nginx configuration.
 
 Result: Successfully delivered a stable, production-ready system despite starting from zero knowledge, demonstrating strong learning agility and problem-solving skills.
 
-### 2. High-Scale Optimization on Standard Infrastructure
-**Challenge**: Handling massive data volume (thousands of transactions/day) and coordinating thousands of warehouses, while keeping the system responsive on standard server specifications.
+### 2. Six Interconnected State Machines (End-to-End Workflows)
 
-**Solution**: Implemented PostgreSQL Materialized Views for cross-module Summary features (upstream-to-downstream). This strategy moves complex query calculation loads (more than 5 tables) to background processes, keeping the system lightweight (OLTP) despite limited server resources.
+**Challenge**: SCM operations required tight coupling between six distinct business workflows. Each workflow needed to trigger downstream actions in other modules automatically.
 
-Result: Dashboard reports remain instant without expensive hardware upgrades, saving infrastructure operational costs.
+**Solution**: Designed and integrated six state machines covering the complete supply chain lifecycle: inter-warehouse transfers, claims management, billing, pickup orders, vendor returns, and issue reporting.
 
-### 3. Multi-Project Hub Architecture (Scalability & Clean Code)
-**Challenge**: System designed to be a "home" for various future internal projects. Required clean code management so teams don't interfere with each other.
+Result: A fully automated end-to-end workflow where claims trigger billing, transfers connect to pickup status, and vendor returns source data from external APIs, all without manual handoffs.
 
-**Solution**: Designed Odoo architecture supporting Multi-Project Repository. Used isolated addons-path configuration and Docker management allowing integration of various independent repos into one SCM Odoo instance.
+### 3. Database Optimization: ~50% RDS Reduction
 
-Result: Enables development scalability where other teams can place their projects in the same ecosystem without breaking existing core SCM.
+**Challenge**: Query performance degraded under growing data volume. Odoo's default ILIKE operator triggered full table scans by ignoring indexes. Both custom-built and inherited legacy modules suffered from unoptimized queries and accumulating unused data, causing daily RDS usage to creep up.
 
-### 4. Pure From-Scratch Module Development
-**Challenge**: Erajaya's highly specific SCM business processes couldn't be accommodated by Odoo's standard modules without major modifications.
+**Solution**: Overrode Odoo's default search by replacing ILIKE with exact match (=) operators on critical columns to force B-tree index usage. Audited all module queries, added B-tree indexes on frequently used filter and join columns, and eliminated N+1 patterns through prefetch and batch reading. Implemented Materialized Views for dashboards, moving complex summary calculations (joining 5+ tables) from real-time ORM queries to PostgreSQL Materialized Views refreshed via scheduled cron. Set up automated cron-based cleanup of stale data, PostgreSQL VACUUM to prevent table bloat, and log rotation to protect disk capacity. Built scheduled reminder system (H+3, H+7, H+14) for follow-up actions and used pandas for efficient bulk data processing.
 
-**Solution**: Built all modules from scratch (no-inheritance). By building from scratch, ensured database schema is truly efficient, storing only necessary data and speeding up indexing processes.
+Result: Maintained daily RDS usage consistently around 50%, preventing degradation from legacy modules while keeping dashboard reports instant, without requiring hardware upgrades.
 
-Result: Optimized performance with lean, custom-tailored data structures.
+### 4. Multi-Service Integration with Async Queue
 
-### 5. Asynchronous Resilience for Legacy Integration
-**Challenge**: Data synchronization to external legacy applications often hampered by high latency (5-10 seconds per hit), risking main system freezing.
+**Challenge**: The system depends on 5+ external services with varying latency (up to tens of seconds per call). Additionally, Kafka streams 300-500K delivery order records daily, creating race condition risks and potential data duplication.
 
-**Solution**: Integrated Job Queue to handle all API calls asynchronously. This ensures warehouse operations continue smoothly without being affected by unoptimized third-party application performance.
+**Solution**: Implemented OCA Queue Job to handle all Kafka data consumption and external API calls asynchronously. Configured dedicated channel workers to isolate high-intensity workloads from standard operations. Applied identity keys based on unique record IDs to guarantee queue integrity and prevent duplicate processing. All REST API calls use token-based authentication with auto-refresh on 401 errors. External integrations include Message Queue and Kafka processing 300-500K records per day async via dedicated channels, Logistics API for real-time delivery status tracking from shipping aggregators, Pricing Service for automated sync of material values for invoice generation, and SSO through Keycloak as a custom authentication module replacing Odoo's default login.
 
-Result: System remains responsive regardless of external API performance.
+Result: Main thread stays responsive regardless of external service latency. Eliminated data duplication issues even during peak transaction surges.
 
-### 6. Database & Server Optimization (Real-World Tuning)
-**Challenge**: Both custom-built and inherited legacy modules suffered from unoptimized queries and accumulating unused data. Daily RDS usage was creeping up, and unbounded log files risked disk storage incidents on application servers.
+### 5. Multi-Project Hub Architecture with CI/CD Pipeline
 
-**Solution**:
-- Audited queries across all modules — including legacy code not originally written by me — and resolved bottlenecks with B-tree indexing and N+1 refactoring.
-- Built cron-based cleanup routines to remove unused data, followed by PostgreSQL vacuum to reclaim dead rows and prevent table bloat.
-- Configured log rotation on application servers to keep disk usage under control.
+**Challenge**: The system needed to serve as a central hub for multiple independent projects managed by different teams within a single Odoo instance, without dependency conflicts or cross-module interference.
 
-Result: Maintained daily RDS usage consistently around 50%, preventing degradation from legacy modules and eliminating storage-related incidents through automated maintenance.
+**Solution**: Designed multi-repo architecture with isolated addons-path configuration via Docker volume mounts. Configured independent Jenkins CI/CD pipelines per project repository. Implemented auto-build triggers on push, assimilating all modules into a single container automatically.
+
+Result: Squads can develop and deploy independently while running in one stable ecosystem. No dependency conflicts between projects like the delivery tracking system and core SCM.
+
+### 6. Pure From-Scratch Module Development
+
+**Challenge**: Erajaya's highly specific SCM business processes could not be accommodated by Odoo's standard modules (stock, sale) without major modifications.
+
+**Solution**: Built all modules from scratch with no inheritance from standard Odoo modules. This ensured the database schema is truly lean, storing only necessary data and enabling faster indexing.
+
+Result: Optimized performance with custom-tailored data structures free from standard module technical debt.
+
+### 7. Multi-Layer Security Architecture
+
+**Challenge**: The system must serve multiple subsidiary companies under one group while strictly isolating data per business unit. Each warehouse and company needs independent access boundaries.
+
+**Solution**: Configured 25+ security groups with granular, role-based permissions across all modules. Implemented record rules based on warehouse and company assignment. Applied dynamic domain filters at the Python level to filter material and warehouse data in real time. Each user can hold multiple role combinations across modules, but only sees data scoped to their assigned warehouses and companies.
+
+Result: Secure multi-tenancy with strict data isolation across business entities. One platform, many companies, zero data leakage.
 
 ## Impact & Metrics
 
-- **Proven at National Scale**: Successfully manages supply chain flow for thousands of Erajaya distribution points nationwide
-- **Optimized Cost**: System performance remains stable on standard servers thanks to query optimization and Materialized Views usage
-- **Developer Friendly**: Multi-repo architecture facilitates cross-departmental collaboration in future feature development
-- **Stable ~50% RDS Usage**: Database optimization and automated maintenance kept daily consumption consistently under control despite growing transaction volume
+- **National Scale** manages supply chain flow for 5,000+ distribution points nationwide
+- **High Throughput** processes 300-500K Kafka delivery order records daily alongside hundreds of concurrent warehouse users
+- **~50% RDS Usage** database optimization kept daily consumption consistently under control despite growing transaction volume
+- **Developer Friendly** multi-repo CI/CD architecture enabling cross-team parallel development
+- **Enterprise Security** 25+ granular role-based access groups with multi-company data isolation
 
 ## Technologies Used
 
-- **Backend**: Odoo 17, Python
-- **Database**: PostgreSQL (Materialized Views)
-- **Infrastructure**: Docker, Multi-Project Repository
-- **Integration**: Job Queue, REST API
-- **Architecture**: Multi-Addons Path, Isolated Repository Management
+- **Backend**: Odoo 17, Python, pandas
+- **Database**: PostgreSQL (Materialized Views, B-tree Indexing, VACUUM)
+- **Infrastructure**: Docker, Multi-Project Repository, Jenkins CI/CD
+- **Integration**: REST API, Message Queue
+- **Architecture**: Multi-Addons Path, Isolated Repository Management, 6 State Machines
