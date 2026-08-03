@@ -1,16 +1,16 @@
 # Exam Competition Platform - TEKIRO
 
-**Role**: Fullstack Engineer  
+**Role**: Fullstack Engineer
 **Tech Stack**: Laravel, PHP, Livewire 3, Tailwind CSS, PostgreSQL, Google Apps Script, Github Actions
 **Period**: January - April 2026
 
 ## Overview
 
-Built the full exam administration platform for TEKIRO Mechanic Competition (TMC) 2026, a national automotive mechanics competition for vocational high schools (SMK) across Indonesia. The system manages the entire competition lifecycle: from participant onboarding and exam form generation to automated scoring, leaderboard management, and digital certificate distribution.
+Built the full exam administration platform for TEKIRO Mechanic Competition (TMC) 2026, a national automotive mechanics competition for vocational high schools (SMK) across Indonesia, which earned the Guinness World Record for Largest Automotive Mechanic Competition with 89,424 participants. The system manages the entire competition lifecycle: from participant onboarding and exam form generation to automated scoring, leaderboard management, and digital certificate distribution.
 
 ## Executive Summary
 
-The core engineering challenge wasn't building a better exam system, it was making the existing Google Forms infrastructure scale to 80,000+ participants without adding significant server costs. The solution involved building an orchestration layer on top of Google's free infrastructure rather than replacing it, combined with a fully automated data pipeline that eliminated the manual coordination burden on the organizing committee.
+The core engineering challenge wasn't building a better exam system, it was making the existing Google Forms infrastructure scale to 89,424 participants without adding significant server costs. The solution involved building an orchestration layer on top of Google's free infrastructure rather than replacing it, combined with a fully automated data pipeline that eliminated the manual coordination burden on the organizing committee.
 
 ## The Architecture Decision: Minimal-Cost Exam Delivery at National Scale
 
@@ -22,7 +22,7 @@ This reframed the entire engineering problem: instead of building an exam engine
 
 **How it works**: Google Apps Script auto-generates multiple Form copies from a single master template. The Laravel system calculates how many form copies each school needs based on registered student count, assigns each school a unique set of form URLs, and maps those URLs back to the correct school and participant list. Load is distributed across separate form instances, each served entirely by Google at no cost. The Laravel server handles only orchestration and administration; it never touches exam delivery traffic.
 
-Result: 80,000+ participants served at minimal cost. The entire exam delivery load runs on Google's infrastructure; the Laravel instance handles only the lightweight orchestration layer.
+Result: 89,424 participants served at minimal cost, earning the Guinness World Record for Largest Automotive Mechanic Competition. The entire exam delivery load runs on Google's infrastructure; the Laravel instance handles only the lightweight orchestration layer.
 
 ## Key Technical Achievements
 
@@ -68,7 +68,8 @@ Result: Admins always know the state of every background task. No silent failure
 
 ## Impact & Metrics
 
-- **Minimal additional server cost** for 80,000+ participants, entire exam delivery runs on Google's infrastructure
+- **Guinness World Record**: Largest Automotive Mechanic Competition with 89,424 participants
+- **Minimal additional server cost** for 89,424 participants, entire exam delivery runs on Google's infrastructure
 - **Eliminated full-day manual score consolidation**, post-exam pipeline runs in minutes, fully automated
 - **Exam link security gap closed**, password-encrypted PDFs with timed password release
 - **Bulk onboarding**, thousands of students registered via Excel import, replacing manual entry
